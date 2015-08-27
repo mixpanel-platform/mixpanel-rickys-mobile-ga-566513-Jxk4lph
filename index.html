@@ -33,7 +33,8 @@
           MP.api.segment('App Open', dateRange).done(function(views) {
             console.log(views.values());
             console.log(results.values());
-            console.log(results.divide(views).values())
+            console.log(results.divide(views).values());
+            debugger;
             eventGraph.MPChart('setData', results.divide(views));
             eventTable.MPTable('setData', results);
           });
