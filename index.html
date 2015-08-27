@@ -7,9 +7,43 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
-    <h1>Hello, World!</h1>
+    <div class="mixpanel-platform-section">
+      <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
+      <div id="dateSelect" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <div id="graph"></div>
+    </div>
+    <div id="table"></div>
     <script>
-      // Run queries and display results here
+      var save;
+      var dateSelect  = $('#dateSelect').MPDatepicker();
+      var eventGraph  = $('#graph').MPChart({chartType: 'line'});
+      var eventTable  = $('#table').MPTable({
+        showPercentages: true,
+        firstColHeader: 'Event'
+      });
+ 
+      var runQuery = function() {
+        var dateRange = dateSelect.MPDatepicker('value');
+        var params = {
+          type:'unique'
+        };
+        if (dateRange) {
+          MP.api.segment('Game Played', dateRange).done(function(results) {
+          MP.api.segment('App Open', dateRange).done(function(views) {
+            console.log(views.values();
+            console.log(results.values());
+            console.log(results.divide(views).values())
+            eventGraph.MPChart('setData', results.divide(views));
+            eventTable.MPTable('setData', results);
+          });
+          });
+        }
+      };
+      dateSelect.on('change', function(e, eventName) {
+        runQuery();
+      });
     </script>
   </body>
 </html>
+ 
