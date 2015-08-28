@@ -32,9 +32,17 @@
           MP.api.segment('Game Played', dateRange).done(function(results) {
             debugger;
             MP.api.segment('App Open', dateRange).done(function(views) {
-              console.log(views.values());
-              console.log(results.values());
-              console.log(results.divide(views).values());
+              var GamePlayedResult= new Object();
+              var AppOpenResult = new Object();
+              AppOpenResult["ViewTabSearch/AppOpen"] = views.values();
+              GamePlayedResult["ViewTabSearch/AppOpen"] = results.values();
+              
+              console.log(AppOpenResult);
+              console.log(GamePlayedResult);
+              
+              
+              console.log(GamePlayedResult.divide(AppOpenResult).values())
+
               // debugger;
               eventGraph.MPChart('setData', results.divide(views));
               eventTable.MPTable('setData', results);
