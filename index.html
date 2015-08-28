@@ -31,6 +31,7 @@
         if (dateRange) {
           MP.api.segment('Game Played', dateRange).done(function(results) {
             MP.api.segment('App Open', dateRange).done(function(views) {
+              debugger;
               var GamePlayedResult= new Object();
               var AppOpenResult = new Object();
               AppOpenResult["ViewTabSearch/AppOpen"] = views.values()["App Open"];
