@@ -33,14 +33,13 @@
             MP.api.segment('App Open', dateRange).done(function(views) {
               var GamePlayedResult= new Object();
               var AppOpenResult = new Object();
-              debugger;
               AppOpenResult["ViewTabSearch/AppOpen"] = views.values();
               GamePlayedResult["ViewTabSearch/AppOpen"] = results.values();
               
               console.log(AppOpenResult);
               console.log(GamePlayedResult);
               
-              
+              debugger;
               console.log(GamePlayedResult.divide(AppOpenResult).values())
 
               // debugger;
