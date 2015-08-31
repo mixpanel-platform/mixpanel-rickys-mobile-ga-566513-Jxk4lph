@@ -34,15 +34,15 @@
               var dividendValues = dividend.values();
               var divisorValues = divisor.values();
               var data = {
-                  'Test': {
+                  'Values': {
                   }
               };
               
               _.each(_.keys(divisorValues['App Open']), function(key){
                 console.log(key);
-                  if (key in dividendValues['Game Played'][key] && divisorValues['App Open'][key]) {
-                    console.log(key);
-                    data['Test'][key] = dividendValues['Game Played'][key] / divisorValues['App Open'][key];
+                  // if (key in dividendValues['Game Played'][key] && divisorValues['App Open'][key]) {
+                  //   console.log(key);
+                    data['Values'][key] = dividendValues['Game Played'][key] / divisorValues['App Open'][key];
                   }
               });
               
