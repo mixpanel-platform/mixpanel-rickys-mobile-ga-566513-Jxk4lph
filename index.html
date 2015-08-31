@@ -29,8 +29,14 @@
           type:'unique'
         };
         if (dateRange) {
-          MP.api.segment('Game Played', dateRange).done(function(dividend) {
-            MP.api.segment('App Open', dateRange).done(function(divisor) {
+          var $dividend = MP.api.segment('Game Played', dateRange);
+          var $divisor = MP.api.segment('App Open', dateRange);
+        
+        
+        
+          $.when($dividend, $divisor).done(function(dividend, divisor){
+          // MP.api.segment('Game Played', dateRange).done(function(dividend) {
+          //   MP.api.segment('App Open', dateRange).done(function(divisor) {
               var dividendValues = dividend.values();
               var divisorValues = divisor.values();
               var data = {
