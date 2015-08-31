@@ -42,13 +42,14 @@
                   that are after our definition of a week
                */
               var divData = dividend.values()
-              _.each(properties, function(prop) {
-                data[prop] = {}
+              _.each(events, function(event) {
+                data[event] = {}
+                console.log(data);
                 _.each(divisorDates, function(divisorDate) {
-                  _.each(_.keys(divData[prop]), function(divDate){
+                  _.each(_.keys(divData[event]), function(divDate){
                     if (divDate <= divisorDate) {
-                      denominator =  divisor.values()[prop][divisorDate];
-                      numerator = dividend.values()[prop][divDate];
+                      denominator =  divisor.values()[event][divisorDate];
+                      numerator = dividend.values()[event][divDate];
                       // Check for dividing by 0, in which case we do not include
                       if (denominator != 0) {
                         data[prop][divDate] =  numerator / denominator;
