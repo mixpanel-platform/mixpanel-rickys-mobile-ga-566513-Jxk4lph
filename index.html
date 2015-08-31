@@ -29,11 +29,11 @@
           type:'unique'
         };
         if (dateRange) {
-          MP.api.segment('Game Played', dateRange).done(function(results) {
-            MP.api.segment('App Open', dateRange).done(function(views) {
+          MP.api.segment('Game Played', dateRange).done(function(dividend) {
+            MP.api.segment('App Open', dateRange).done(function(divisor) {
               debugger;
-              var divisor = views.values();
-              var dividend = results.values();
+            //var divisor = views.values();
+              //..var dividend = results.values();
               
               var data = {};
               // Set our divisor dates and report them backgrounds
