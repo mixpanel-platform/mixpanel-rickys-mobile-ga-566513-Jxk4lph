@@ -31,9 +31,6 @@
         if (dateRange) {
           MP.api.segment('Game Played', dateRange).done(function(dividend) {
             MP.api.segment('App Open', dateRange).done(function(divisor) {
-              debugger;
-            //var divisor = views.values();
-              //..var dividend = results.values();
               
               var data = {};
               // Set our divisor dates and report them backgrounds
@@ -61,6 +58,7 @@
                 });
               });
               console.log (data)
+              debugger;
               
               eventGraph.MPChart('setData', data);
               eventTable.MPTable('setData', data);
