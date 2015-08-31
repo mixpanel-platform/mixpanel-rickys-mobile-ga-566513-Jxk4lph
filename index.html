@@ -29,24 +29,18 @@
           type:'unique'
         };
         if (dateRange) {
-          var $dividend = MP.api.segment('Game Played', dateRange);
-          var $divisor = MP.api.segment('App Open', dateRange);
-        
-        
-        
-          $.when($dividend, $divisor).done(function(dividend, divisor){
-          // MP.api.segment('Game Played', dateRange).done(function(dividend) {
-          //   MP.api.segment('App Open', dateRange).done(function(divisor) {
+          MP.api.segment('Game Played', dateRange).done(function(dividend) {
+            MP.api.segment('App Open', dateRange).done(function(divisor) {
               var dividendValues = dividend.values();
               var divisorValues = divisor.values();
               var data = {
-                  'Game Played/ App Open': {
+                  'Test': {
                   }
               };
               
               _.each(_.keys(divisorValues['App Open']), function(key){
                   if (key in dividendValues && dividendValues[key] && divisorValues['App Open'][key]) {
-                    data['Game Played/ App Open'][key] = dividendValues[key] / divisorValues['App Open'][key];
+                    data['Test'][key] = dividendValues[key] / divisorValues['App Open'][key];
                   }
               });
               
@@ -55,6 +49,7 @@
 
               eventGraph.MPChart('setData', data);
               eventTable.MPTable('setData', data);
+            });
           });
         }
       };
