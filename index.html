@@ -39,7 +39,7 @@
               };
               
               _.each(_.keys(divisorValues['App Open']), function(key){
-                  if (key in dividendValues && dividendValues[key] && divisorValues[dauEventName][key]) {
+                  if (key in dividendValues && dividendValues[key] && divisorValues['App Open'][key]) {
                     data['Game Played/ App Open'][key] = dividendValues[key] / divisorValues['App Open'][key];
                   }
               });
