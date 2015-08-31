@@ -39,15 +39,12 @@
               };
               
               _.each(_.keys(divisorValues['App Open']), function(key){
-                console.log(key);
-                  // if (key in dividendValues['Game Played'][key] && divisorValues['App Open'][key]) {
-                  //   console.log(key);
                   if (divisorValues['App Open'][key] != 0) {
                     data['Values'][key] = dividendValues['Game Played'][key] / divisorValues['App Open'][key];
                   }
               });
               
-              console.log (data)
+              console.log (data);
 
               eventGraph.MPChart('setData', data);
               eventTable.MPTable('setData', data);
