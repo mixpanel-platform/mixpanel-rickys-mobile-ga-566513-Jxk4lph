@@ -40,6 +40,7 @@
               
               _.each(_.keys(divisorValues['App Open']), function(key){
                   if (key in dividendValues && dividendValues[key] && divisorValues['App Open'][key]) {
+                    console.log(key);
                     data['Test'][key] = dividendValues[key] / divisorValues['App Open'][key];
                   }
               });
